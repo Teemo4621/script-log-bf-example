@@ -1,6 +1,8 @@
-_G.Config = {
-	apikey = "your api key"
-}
+--_G.Config = {
+--    log = {
+--        apikey = "your api key"
+--    }
+--}
 
 local requests = (syn and syn.request) or (krnl and request) or (fluxus and fluxus.request) or (electron and http.request) or request or http.request
 local host = "https://zemondv.xyz"
