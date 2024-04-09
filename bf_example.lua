@@ -1,13 +1,11 @@
 _G.Config = {
-    log = {
-        apikey = "fc91399f-17b1-4e82-8447-72012cf1bb3a"
-    }
+	apikey = "your api key"
 }
 
 local requests = (syn and syn.request) or (krnl and request) or (fluxus and fluxus.request) or (electron and http.request) or request or http.request
 local host = "https://zemondv.xyz"
 
-local apikey = _G.Config.log.apikey
+local apikey = _G.Config.apikey
 
 getgenv().Local=function(data)
     if data==1 then return game.Players.LocalPlayer.Name end
