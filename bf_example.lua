@@ -343,7 +343,6 @@ local function GetSword()
             swords = swords .. "Shark Anchor, "
         end
     end
-    swords = swords:gsub(",", "")
     return swords
 end
 
