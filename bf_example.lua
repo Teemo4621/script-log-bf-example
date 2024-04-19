@@ -27,7 +27,6 @@ function Added(data)
         Method = "POST",
         Body = data,
     })
-    print("💜 Added Account to ZDVLOGS ")
     return update
 end
 
@@ -314,31 +313,6 @@ end
 print("Loading Function: 3")
 
 task.spawn(function()
-    pcall(function ()
-        local bodydata = {
-            api_key = apikey,
-            data = {
-                active = "",
-                lastupdate = "",
-                username = getgenv().Local(1),
-                info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
-                fruit = getFruit(),
-                awakenskill = GetNewAwake(),
-                allfightingstyles = GetAllMeleeNew(),
-                race = game:GetService("Players").LocalPlayer.Data.Race.Value.." ["..CheckRaceV()..GetRaceTier().."]",
-                mirror = CheckMirrorFractalNew(),
-                valkyrie = CheckVK(),
-                darkfragment = GetDarkFragment(),
-                materialinv = "DrakFragment".."["..GetDarkFragment().."]",
-                beli = Abbreviate(game.Players.LocalPlayer.Data.Beli.Value),
-                fragment = Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value),
-                fruitinv = GetFruitInU()
-            }
-        }
-        local jsonData = json_encode(bodydata)
-        Added(jsonData)
-    end)
-
     while true do
         pcall(function ()
             local bodydata = {
@@ -362,6 +336,7 @@ task.spawn(function()
                 }
             }
             local jsonData = json_encode(bodydata)
+	    Added(jsonData)
             Update(jsonData)
         end)
         wait(2)
