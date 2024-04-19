@@ -314,35 +314,36 @@ local function GetSword()
     local swords = ""
     for i, v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
         if v.Name == "Dark Blade" then
-            swords = swords .. "Dark Blade "
+            swords = swords .. "Dark Blade, "
         elseif v.Name == "Saber" then
-            swords = swords .. "Saber "
+            swords = swords .. "Saber, "
         elseif v.Name == "Rengoku" then
-            swords = swords .. "Rengoku "
+            swords = swords .. "Rengoku, "
         elseif v.Name == "Midnight Blade" then
-            swords = swords .. "Midnight Blade "
+            swords = swords .. "Midnight Blade, "
         elseif v.Name == "Dragon Trident" then
-            swords = swords .. "Dragon Trident "
+            swords = swords .. "Dragon Trident, "
         elseif v.Name == "Yama" then
-            swords = swords .. "Yama "
+            swords = swords .. "Yama, "
         elseif v.Name == "Buddy Sword" then
-            swords = swords .. "Buddy Sword "
+            swords = swords .. "Buddy Sword, "
         elseif v.Name == "Canvander" then
-            swords = swords .. "Canvander "
+            swords = swords .. "Canvander, "
         elseif v.Name == "Spikey Trident" then
-            swords = swords .. "Spikey Trident "
+            swords = swords .. "Spikey Trident, "
         elseif v.Name == "Hallow Scythe" then
-            swords = swords .. "Hallow Scythe "
+            swords = swords .. "Hallow Scythe, "
         elseif v.Name == "Dark Dagger" then
-            swords = swords .. "Dark Dagger "
+            swords = swords .. "Dark Dagger, "
         elseif v.Name == "Tushita" then
-            swords = swords .. "Tushita "
+            swords = swords .. "Tushita, "
         elseif v.Name == "Cursed Dual Katana" then
-            swords = swords .. "CDK "
+            swords = swords .. "CDK, "
         elseif v.Name == "Shark Anchor" then
-            swords = swords .. "Shark Anchor"
+            swords = swords .. "Shark Anchor, "
         end
     end
+    swords = swords:gsub(", $", "")
     return swords
 end
 
