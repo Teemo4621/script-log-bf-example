@@ -171,12 +171,12 @@ function GetGOD()
 end
 
 function CheckMirrorFractalNew()
-    MirrorFac_Text = false
+    MirrorFac_Text = "❌"
     for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")) do
         if type(v) == "table" then
             if v.Type == "Material" then
                 if v.Name == "Mirror Fractal" then
-                    MirrorFac_Text = true
+                    MirrorFac_Text = "✅"
                 end
             end
         end
@@ -286,16 +286,16 @@ local function GetRaceTier()
 end
 
 local function CheckVK()
-    VK_Text = false
+    VK_Text = "❌"
     for i,v in pairs(game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("getInventoryWeapons")) do -- เช็คในกระเป๋า
         for i1,v1 in pairs(v) do
             if v1 == 'Valkyrie Helm' then
-                VK_Text = true
+                VK_Text = "✅"
             end
         end
     end
     if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild('Valkyrie Helm') or game:GetService("Players").LocalPlayer.Character:FindFirstChild('Valkyrie Helm') then
-        VK_Text = true
+        VK_Text = "✅"
     end
     return VK_Text
 end
@@ -310,6 +310,42 @@ local function getFruit()
     return text
 end
 
+local function GetSword()
+    local swords = ""
+    for i, v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+        if v.Name == "Dark Blade" then
+            swords = swords .. "Dark Blade, "
+        elseif v.Name == "Saber" then
+            swords = swords .. "Saber, "
+        elseif v.Name == "Rengoku" then
+            swords = swords .. "Rengoku, "
+        elseif v.Name == "Midnight Blade" then
+            swords = swords .. "Midnight Blade, "
+        elseif v.Name == "Dragon Trident" then
+            swords = swords .. "Dragon Trident, "
+        elseif v.Name == "Yama" then
+            swords = swords .. "Yama, "
+        elseif v.Name == "Buddy Sword" then
+            swords = swords .. "Buddy Sword, "
+        elseif v.Name == "Canvander" then
+            swords = swords .. "Canvander, "
+        elseif v.Name == "Spikey Trident" then
+            swords = swords .. "Spikey Trident, "
+        elseif v.Name == "Hallow Scythe" then
+            swords = swords .. "Hallow Scythe, "
+        elseif v.Name == "Dark Dagger" then
+            swords = swords .. "Dark Dagger, "
+        elseif v.Name == "Tushita" then
+            swords = swords .. "Tushita, "
+        elseif v.Name == "Cursed Dual Katana" then
+            swords = swords .. "CDK, "
+        elseif v.Name == "Shark Anchor" then
+            swords = swords .. "Shark Anchor, "
+        end
+    end
+    return swords
+end
+
 print("Loading Function: 3")
 
 task.spawn(function()
@@ -318,8 +354,6 @@ task.spawn(function()
             local bodydata = {
                 api_key = apikey,
                 data = {
-                    active = "",
-                    lastupdate = "",
                     username = getgenv().Local(1),
                     info = CheckLevel()..""..GetGOD()..CheckCDKNew()..CheckSGTNew(),
                     fruit = getFruit(),
@@ -329,14 +363,14 @@ task.spawn(function()
                     mirror = CheckMirrorFractalNew(),
                     valkyrie = CheckVK(),
                     darkfragment = GetDarkFragment(),
-                    materialinv = "DrakFragment".."["..GetDarkFragment().."]",
+                    swordsinv = GetSword(),
                     beli = Abbreviate(game.Players.LocalPlayer.Data.Beli.Value),
                     fragment = Abbreviate(game.Players.LocalPlayer.Data.Fragments.Value),
-                    fruitinv = GetFruitInU()
+                    fruitsinv = GetFruitInU()
                 }
             }
             local jsonData = json_encode(bodydata)
-	    Added(jsonData)
+            Added(jsonData)
             Update(jsonData)
         end)
         wait(2)
