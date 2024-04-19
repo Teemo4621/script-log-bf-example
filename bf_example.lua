@@ -171,12 +171,12 @@ function GetGOD()
 end
 
 function CheckMirrorFractalNew()
-    MirrorFac_Text = false
+    MirrorFac_Text = "❌"
     for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventory")) do
         if type(v) == "table" then
             if v.Type == "Material" then
                 if v.Name == "Mirror Fractal" then
-                    MirrorFac_Text = true
+                    MirrorFac_Text = "✅"
                 end
             end
         end
@@ -286,16 +286,16 @@ local function GetRaceTier()
 end
 
 local function CheckVK()
-    VK_Text = false
+    VK_Text = "❌"
     for i,v in pairs(game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("getInventoryWeapons")) do -- เช็คในกระเป๋า
         for i1,v1 in pairs(v) do
             if v1 == 'Valkyrie Helm' then
-                VK_Text = true
+                VK_Text = "✅"
             end
         end
     end
     if game:GetService("Players").LocalPlayer.Backpack:FindFirstChild('Valkyrie Helm') or game:GetService("Players").LocalPlayer.Character:FindFirstChild('Valkyrie Helm') then
-        VK_Text = true
+        VK_Text = "✅"
     end
     return VK_Text
 end
