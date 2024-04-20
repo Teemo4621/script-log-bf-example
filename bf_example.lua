@@ -373,6 +373,6 @@ task.spawn(function()
             Added(jsonData)
             Update(jsonData)
         end)
-        wait(2)
+        wait(15)
     end;
 end);
