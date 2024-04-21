@@ -370,9 +370,8 @@ task.spawn(function()
                 }
             }
             local jsonData = json_encode(bodydata)
-            Added(jsonData)
             Update(jsonData)
         end)
-        wait(15)
+        wait(10)
     end;
 end);
